@@ -4,7 +4,9 @@ This problem can be described as the problem of finding optimal path in the grap
 
 # Execution guide
 
-This is applies for all the tasks. There are several options on how to run the program.
+This is applies for all the tasks. An empty line line in System.in is required after all the content of M x N tables for both lazy-hiker and prime-tables problems. The reason for that is that README does not specify anything about the amount of rows of the table being passed as the first parameter so it is not possible to know whether to wait for the next line or the whole was table already passed.
+
+There are several options on how to run the program:
 
 1. Use Bootstrap.main() method from IDE. Gradle project should be fully functional in any IDE after importing and each task has its own Bootstrap class with main() method, so it should be rather easy to execute.
  
