@@ -1,8 +1,6 @@
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 class StandardIOUtils {
     static String readLine() {
@@ -11,8 +9,13 @@ class StandardIOUtils {
     }
 
     static List<String> readSystemIn() {
-        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        return in.lines().collect(Collectors.toList());
+        List<String> inputLines = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+        String nextLine;
+        while (!(nextLine = scanner.nextLine()).equals("")) {
+            inputLines.add(nextLine);
+        }
+        return inputLines;
     }
 
     static void writeToSystemOut(String output) {
