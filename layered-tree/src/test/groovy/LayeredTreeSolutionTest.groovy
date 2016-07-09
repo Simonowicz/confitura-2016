@@ -24,6 +24,7 @@ class LayeredTreeSolutionTest extends Specification {
                               "3,2\n" +
                               "4,5,6,7\n" +
                               "_,_,_,_,_,_,9,8\n"
+        "1"                 | "1\n"
     }
 
     @Unroll

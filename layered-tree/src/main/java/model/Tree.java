@@ -9,8 +9,15 @@ public class Tree {
         this.root = root;
     }
 
+    public Node getRoot() {
+        return root;
+    }
+
     @Override
     public String toString() {
+        if (root == null) {
+            return "";
+        }
         StringBuilder stringBuilder = new StringBuilder();
         LinkedList<Node> currentLevel = new LinkedList<>();
         currentLevel.add(root);

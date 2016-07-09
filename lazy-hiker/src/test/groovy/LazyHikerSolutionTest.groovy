@@ -12,6 +12,7 @@ class LazyHikerSolutionTest extends Specification {
         where:
         inputArray                                                                            | expected
         [[1, 1, 1, 1], [1, 2, 3, 1], [1, 5, 3, 1], [1, 1, 1, 1]]                              | ['RRRDDD', 'DDDRRR']
+        [[1, 9, 9, 9], [1, 1, 1, 9], [9, 9, 1, 9], [9, 1, 1, 9], [9, 1, 9, 9], [9, 1, 1, 1]]  | ['DRRDDLDDRR']
         [[1, 2, 1, 1, 1], [1, 2, 1, 2, 1], [1, 2, 1, 2, 1], [1, 2, 1, 2, 1], [1, 1, 1, 2, 1]] | ['DDDDRRUUUURRDDDD'] // aka snake path
     }
 }

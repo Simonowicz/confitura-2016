@@ -2,10 +2,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Bootstrap {
-
-    public static void main(String [] args) {
+    public static void main(String[] args) {
         List<String> input = StandardIOUtils.readSystemIn();
-        Integer [][] inputArray = new Integer[input.size()][];
+        Integer[][] inputArray = new Integer[input.size()][];
         int i = 0;
         for (String inputLine : input) {
             try {
@@ -14,8 +13,7 @@ public class Bootstrap {
                 StandardIOUtils.writeToSystemOut("Error: Could not parse integer from string for line: " + inputLine + ", exception message: " + e.getMessage());
             }
         }
-        PrimeTablesSolution primeTablesSolution = new PrimeTablesSolution();
-        int primeSums = primeTablesSolution.countPrimeSums(inputArray);
-        StandardIOUtils.writeToSystemOut("" + primeSums);
+        LazyHikerSolution lazyHikerSolution = new LazyHikerSolution();
+        lazyHikerSolution.findLaziestPath(inputArray).forEach(StandardIOUtils::writeToSystemOut);
     }
 }

@@ -14,33 +14,35 @@ public class LayeredTreeSolution {
     }
 
     private Tree prepareTree(String inputLine) {
-        Tree tree = new Tree();
         List<Integer> sortedIntegers;
         try {
             sortedIntegers = Arrays.stream(inputLine.split(",")).map(Integer::parseInt).sorted().collect(Collectors.toList());
         } catch (NumberFormatException e) {
-            StandardIOUtils.writeToSystemOut("Error: Number format exception caught when trying to parse: " + inputLine);
+            StandardIOUtils.writeToSystemOut("Error: Number format exception caught when trying to parse: " + inputLine + ", exception message: " + e.getMessage());
             throw e;
         }
+        return createAndPopulateTree(sortedIntegers);
+    }
+
+    private Tree createAndPopulateTree(List<Integer> sortedIntegers) {
+        Tree tree = new Tree();
         if (!sortedIntegers.isEmpty()) {
-            Node root = new Node(sortedIntegers.get(0));
-            root.createChildren();
-            tree.setRoot(root);
-            PopulatingMode populatingMode = PopulatingMode.EVEN;
+            PopulatingMode populatingMode = PopulatingMode.ODD;
             LinkedList<Node> currentLevelNodes = new LinkedList<>();
-            currentLevelNodes.addAll(Arrays.asList(root.getRight(), root.getLeft()));
             LinkedList<Node> nextLevelNodes = new LinkedList<>();
-            int currentLevel = 2;
-            for (int i = 1; i < sortedIntegers.size(); i++) {
+            int currentLevel = 1;
+            for (int i = 0; i < sortedIntegers.size(); i++) {
                 boolean flipPopulatingMode = false;
                 Node currentNode = currentLevelNodes.poll();
+                if (currentNode == null) {
+                    currentNode = new Node(sortedIntegers.get(i));
+                    tree.setRoot(currentNode);
+                }
                 if (currentLevelNodes.isEmpty()) {
                     flipPopulatingMode = true;
                 }
                 currentNode.setValue(sortedIntegers.get(i));
-                if (getSpacesAlreadyAvailable(currentLevel) < sortedIntegers.size()) {
-                    currentNode.createChildren();
-                }
+                createChildrenIfNecessary(sortedIntegers, currentNode, currentLevel);
                 if (populatingMode == PopulatingMode.EVEN) {
                     nextLevelNodes.addFirst(currentNode.getRight());
                     nextLevelNodes.addFirst(currentNode.getLeft());
@@ -57,6 +59,12 @@ public class LayeredTreeSolution {
             }
         }
         return tree;
+    }
+
+    private void createChildrenIfNecessary(List<Integer> sortedIntegers, Node node, int currentLevel) {
+        if (getSpacesAlreadyAvailable(currentLevel) < sortedIntegers.size()) {
+            node.createChildren();
+        }
     }
 
     int getSpacesAlreadyAvailable(int currentLevel) {
