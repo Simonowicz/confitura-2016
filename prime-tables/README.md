@@ -4,7 +4,7 @@ The solution of this task is provided only with certain probability that it is a
 
 I decided to use this method because verifying whether given number is prime would require significant amount of time for bigger integer values and even in cryptography world usage of probable prime is accepted.
 
-Besides that I believe that the task description provides incorrect answer, since for the data provided, both my algorithm and the solution that I did manually on the sheet of paper indicate that there are in fact 10 prime number sums in sub tables. These are:
+Besides that I believe that the task description provides ~~incorrect~~ correct answer, since for the data provided, both my algorithm and the solution that I did manually on the sheet of paper indicate that there are in fact ~~10~~ 11 prime number sums in sub tables. These are:
 
 Starting at index 0, 0: (row, column)
 
@@ -20,6 +20,12 @@ Starting at index 0, 0: (row, column)
 1 1
 1 2
 1 1
+```
+
+```
+1 1 1 1
+1 2 1 1
+1 1 1 1
 ```
 
 Starting at index 0, 1:
